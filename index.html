@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <script>
+        function Submit(){
+                let weight = document.getElementById("weight").value
+                let height = document.getElementById("height").value / 100
+                let result = weight/(height*height)
+                if(isNaN(result)){
+                    document.getElementById("result").innerText = `Please enter number in the box.`
+                }
+                else{
+                    document.getElementById("result").innerText = `Your BMI is ${Math.floor(result)}`
+                    if(result < 18.5){
+                        document.getElementById("grading").innerText = `Underweight`
+                    }
+                    else if (result >= 18.5 && result <= 24.9){
+                        document.getElementById("grading").innerText = `Normalweight`
+                    }
+                    else if (result >= 25 && result <= 29.9){
+                        document.getElementById("grading").innerText = `Overweight`
+                    }
+                    else if(result >= 30){
+                        document.getElementById("grading").innerText = `Obese`
+                    }
+                }
+        }
+
+        function Reset(){
+            document.getElementById("result").innerText = ""
+            document.getElementById("weight").value = ""
+            document.getElementById("height").value = ""
+        }
+
+        function darkMode(){
+            let darkMode = true
+            if (document.getElementById("darkMode").innerText == "DarkMode"){
+                //turn into 
+                document.getElementById("darkMode").innerText = "LightMode"
+                document.body.style.color = "white"
+                document.body.style.backgroundColor = "black"
+            }
+            else {
+                //Turn into darkmode
+                document.getElementById("darkMode").innerText = "DarkMode"
+                document.body.style.color = "black"
+                document.body.style.backgroundColor = "white"
+            }
+        }
+    </script>
+    <title>BMI</title>
+</head>
+<body>
+    <div id="content">
+        <h1>This is BMI calculator</h1>
+        <div class="flex-center">
+            <button id="darkMode" onclick="darkMode()">DarkMode</button>
+        </div>
+        <form> 
+            <label for="weight">Enter your weight(kg)</label><br>
+            <input type="number" id="weight"><br>
+            <br>
+            <label for="height">Enter your height(cm)</label><br>
+            <input type="number" id="height"><br>
+        </form>
+        <div class="flex-center">
+            <button style="margin-top: 1%;" onclick="Submit()">Submit</button>
+        </div>
+        <div class="flex-center">
+            <button style="margin-top: 1%;" onclick="Reset()">Reset</button>
+        </div>
+        <h2 id="result"></h2>
+        <h3 id="grading"></h3>
+    </div>
+</body>
+</html>

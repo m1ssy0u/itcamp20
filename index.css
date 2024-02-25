@@ -1,0 +1,22 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+form {
+    text-align: center;
+}
+.flex-center { 
+    display: flex;
+    justify-content: center;
+}
+#content {
+    margin-top: 5%;
+}
